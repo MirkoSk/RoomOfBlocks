@@ -6,6 +6,7 @@ public class CubeManager : MonoBehaviour
 {
     [MinMaxRange(-1f, 1f)]
     [SerializeField] RangedFloat offsetAmount = new RangedFloat();
+
     CubeController[] cubes;
 
 
@@ -20,7 +21,7 @@ public class CubeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Submit")) MoveCubes();
+        if (Input.GetButtonDown("Submit") || Input.GetButtonDown("Fire1")) MoveCubes();
     }
 
 
