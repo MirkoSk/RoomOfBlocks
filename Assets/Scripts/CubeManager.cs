@@ -4,8 +4,16 @@ using UnityEngine;
 
 public class CubeManager : MonoBehaviour
 {
+    [Space]
     [MinMaxRange(-1f, 1f)]
     [SerializeField] RangedFloat offsetAmount = new RangedFloat();
+    [SerializeField] AnimationCurve offsetDistribution = new AnimationCurve();
+
+    [Space]
+    [SerializeField] CubeController blueCube = null;
+    [MinMaxRange(-1f, 1f)]
+    [SerializeField]
+    RangedFloat blueCubeOffsetAmount = new RangedFloat();
 
     CubeController[] cubes;
 
@@ -30,7 +38,16 @@ public class CubeManager : MonoBehaviour
     {
         foreach (CubeController cube in cubes)
         {
-            cube.MoveCube(Random.Range(offsetAmount.minValue, offsetAmount.maxValue));
+            if (cube == blueCube) cube.MoveCube(Random.Range(blueCubeOffsetAmount.minValue, blueCubeOffsetAmount.maxValue));
+
+            else
+            {
+                float offsetStrength = offsetDistribution.Evaluate(Random.Range(-1f, 1f));
+                if (offsetStrength >= 0) offsetStrength *= offsetAmount.maxValue;
+                else offsetStrength *= offsetAmount.minValue;
+
+                cube.MoveCube(offsetStrength);
+            }
         }
     }
 }

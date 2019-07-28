@@ -13010,6 +13010,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   edgeCube: 0
+--- !u!114 &1344856769 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1464496582, guid: 535c836e2cebc294dbbc4642d7aaf685,
+    type: 3}
+  m_PrefabInstance: {fileID: 3103916841278046030}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1056f67726c59458702c2775618b9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1382812152
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13145,7 +13157,53 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offsetAmount:
     minValue: -0.1603948
-    maxValue: 0.20974706
+    maxValue: 0.5516274
+  offsetDistribution:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -1
+      value: -1
+      inSlope: 0.21606214
+      outSlope: 0.21606214
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.1292373
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.2929132
+      outSlope: 0.2929132
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.09980714
+      outWeight: 0.20000695
+    - serializedVersion: 3
+      time: 0.5762431
+      value: 0.2953652
+      inSlope: 1.1360222
+      outSlope: 1.1360222
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0.86562014
+      outSlope: 0.86562014
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.29498044
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  blueCube: {fileID: 1344856769}
+  blueCubeOffsetAmount:
+    minValue: 0.23931624
+    maxValue: 0.5470086
 --- !u!4 &1391640389
 Transform:
   m_ObjectHideFlags: 0
