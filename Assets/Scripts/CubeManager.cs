@@ -29,7 +29,16 @@ public class CubeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Submit") || Input.GetButtonDown("Fire1")) MoveCubes();
+        if (Input.GetButtonDown("Submit") || Input.GetButtonDown("Fire1"))
+        {
+            bool cubesIdle = true;
+            foreach (CubeController cube in cubes)
+            {
+                if (!cube.Idle) cubesIdle = false;
+            }
+
+            if (cubesIdle == true) MoveCubes();
+        }
     }
 
 

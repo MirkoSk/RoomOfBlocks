@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class CubeController : MonoBehaviour
 {
     public bool edgeCube;
     Vector3 origin = new Vector3();
+    bool idle = true;
 
+    public bool Idle { get { return idle; } }
 
     void Awake()
     {
@@ -17,24 +20,26 @@ public class CubeController : MonoBehaviour
 
     public void MoveCube(float offset)
     {
+        idle = false;
+
         if (SpaceAboveCubeEmtpy())
         {
             if (!edgeCube)
             {
                 Vector3 newPosition = origin;
                 newPosition.y = origin.y + offset;
-                transform.localPosition = newPosition;
+                transform.DOLocalMove(newPosition, 1f).OnComplete(() => idle = true);
             }
             else
             {
                 Vector3 newPosition = origin;
                 newPosition.y = origin.y + Mathf.Abs(offset);
-                transform.localPosition = newPosition;
+                transform.DOLocalMove(newPosition, 1f).OnComplete(() => idle = true);
             }
         }
         else
         {
-            transform.localPosition = origin;
+            transform.DOLocalMove(origin, 1f).OnComplete(() => idle = true);
         }
     }
 

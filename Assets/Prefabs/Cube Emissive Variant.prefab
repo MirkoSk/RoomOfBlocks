@@ -120,7 +120,7 @@ MonoBehaviour:
   sunHaloSize: 0.1
   fadeDistance: 10000
   affectDiffuse: 1
-  affectSpecular: 1
+  affectSpecular: 0
   nonLightmappedOnly: 0
   lightTypeExtent: 0
   m_SpotLightShape: 0
@@ -208,6 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da1056f67726c59458702c2775618b9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  edgeCube: 0
 --- !u!1001 &3103916842741173901
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -218,7 +219,7 @@ PrefabInstance:
     - target: {fileID: 7704606538219695588, guid: ac70b22055aef9c47ab3c7922a4a9b57,
         type: 3}
       propertyPath: m_Name
-      value: Cube (4)
+      value: Cube Emissive Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7704606538219695588, guid: ac70b22055aef9c47ab3c7922a4a9b57,
         type: 3}
