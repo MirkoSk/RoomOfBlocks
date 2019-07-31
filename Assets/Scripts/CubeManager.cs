@@ -10,7 +10,7 @@ public class CubeManager : MonoBehaviour
     [SerializeField] AnimationCurve offsetDistribution = new AnimationCurve();
 
     [Space]
-    [SerializeField] CubeController blueCube = null;
+    [SerializeField] CubeSelector cubeSelector = null;
     [MinMaxRange(-1f, 1f)]
     [SerializeField]
     RangedFloat blueCubeOffsetAmount = new RangedFloat();
@@ -47,7 +47,7 @@ public class CubeManager : MonoBehaviour
     {
         foreach (CubeController cube in cubes)
         {
-            if (cube == blueCube) cube.MoveCube(Random.Range(blueCubeOffsetAmount.minValue, blueCubeOffsetAmount.maxValue));
+            if (cubeSelector != null && cube == cubeSelector.BlueCube) cube.MoveCube(Random.Range(blueCubeOffsetAmount.minValue, blueCubeOffsetAmount.maxValue));
 
             else
             {
