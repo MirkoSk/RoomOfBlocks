@@ -83,9 +83,9 @@ public class CubeSelector : MonoBehaviour
     {
         if (blueCube != null)
         {
-            blueCube.GetComponentInChildren<MeshRenderer>().material.DOColor(Color.black, "_EmissiveColor", tweenDuration).SetId(blueCube).SetEase(tweenEaseType);
+            blueCube.GetComponentInChildren<MeshRenderer>().material.DOColor(Color.black, "_EmissiveColor", tweenDuration * tweenFadeOutMultiplier).SetId(blueCube).SetEase(tweenEaseType);
             Light light = blueCube.GetComponentInChildren<Light>();
-            light.DOIntensity(0f, tweenDuration).SetId(blueCube).SetEase(tweenEaseType)
+            light.DOIntensity(0f, tweenDuration * tweenFadeOutMultiplier).SetId(blueCube).SetEase(tweenEaseType)
                 .OnComplete(() =>
                 {
                     light.enabled = false;

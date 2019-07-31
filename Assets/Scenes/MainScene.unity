@@ -7872,11 +7872,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 780553329}
     m_Modifications:
-    - target: {fileID: 2511282865259021521, guid: ac70b22055aef9c47ab3c7922a4a9b57,
-        type: 3}
-      propertyPath: m_Intensity
-      value: 2.952324
-      objectReference: {fileID: 0}
     - target: {fileID: 7704606538219695588, guid: ac70b22055aef9c47ab3c7922a4a9b57,
         type: 3}
       propertyPath: m_Name
@@ -11716,7 +11711,7 @@ MonoBehaviour:
   emissiveColor: {r: 0, g: 0.78616345, b: 0.9433962, a: 1}
   lightIntensity: 1.59
   tweenDuration: 1.2
-  tweenFadeOutMultiplier: 3
+  tweenFadeOutMultiplier: 2.5
   tweenEaseType: 1
   blueCube: {fileID: 0}
   cubeManager: {fileID: 1391640388}
