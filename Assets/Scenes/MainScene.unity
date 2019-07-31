@@ -7874,11 +7874,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2511282865259021521, guid: ac70b22055aef9c47ab3c7922a4a9b57,
         type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2511282865259021521, guid: ac70b22055aef9c47ab3c7922a4a9b57,
-        type: 3}
       propertyPath: m_Intensity
       value: 2.952324
       objectReference: {fileID: 0}
@@ -7886,11 +7881,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cube (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7704606538219695588, guid: ac70b22055aef9c47ab3c7922a4a9b57,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 464128638837592669, guid: ac70b22055aef9c47ab3c7922a4a9b57,
         type: 3}
@@ -7945,11 +7935,6 @@ PrefabInstance:
     - target: {fileID: 464128638837592669, guid: ac70b22055aef9c47ab3c7922a4a9b57,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7922408748645340550, guid: ac70b22055aef9c47ab3c7922a4a9b57,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -11728,7 +11713,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   emissiveColor: {r: 0, g: 0.78616345, b: 0.9433962, a: 1}
+  lightIntensity: 1.59
   tweenDuration: 2
+  tweenFadeOutMultiplier: 3
   blueCube: {fileID: 0}
 --- !u!1001 &1393124055
 PrefabInstance:

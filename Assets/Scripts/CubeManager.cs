@@ -23,7 +23,7 @@ public class CubeManager : MonoBehaviour
     private void Awake()
     {
         DOTween.Init(recycleAllByDefault: true, logBehaviour: LogBehaviour.Default).SetCapacity(1000, 0);
-        DOTween.defaultEaseType = Ease.InOutQuad;
+        DOTween.defaultEaseType = Ease.OutSine;
         Cursor.visible = false;
     }
 
