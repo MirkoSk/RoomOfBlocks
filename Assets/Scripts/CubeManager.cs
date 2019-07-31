@@ -6,15 +6,16 @@ using DG.Tweening;
 public class CubeManager : MonoBehaviour
 {
     [Space]
+    [SerializeField] float tweenDuration = 2f;
     [MinMaxRange(-1f, 1f)]
     [SerializeField] RangedFloat offsetAmount = new RangedFloat();
     [SerializeField] AnimationCurve offsetDistribution = new AnimationCurve();
-
-    [Space]
-    [SerializeField] CubeSelector cubeSelector = null;
     [MinMaxRange(-1f, 1f)]
     [SerializeField]
     RangedFloat blueCubeOffsetAmount = new RangedFloat();
+
+    [Header("References")]
+    [SerializeField] CubeSelector cubeSelector = null;
 
     CubeController[] cubes;
 
@@ -23,7 +24,6 @@ public class CubeManager : MonoBehaviour
     private void Awake()
     {
         DOTween.Init(recycleAllByDefault: true, logBehaviour: LogBehaviour.Default).SetCapacity(1000, 0);
-        DOTween.defaultEaseType = Ease.OutSine;
         Cursor.visible = false;
     }
 
@@ -51,11 +51,11 @@ public class CubeManager : MonoBehaviour
 
 
 
-    void MoveCubes()
+    public void MoveCubes()
     {
         foreach (CubeController cube in cubes)
         {
-            if (cubeSelector != null && cube == cubeSelector.BlueCube) cube.MoveCube(Random.Range(blueCubeOffsetAmount.minValue, blueCubeOffsetAmount.maxValue));
+            if (cubeSelector != null && cube == cubeSelector.BlueCube) cube.MoveCube(Random.Range(blueCubeOffsetAmount.minValue, blueCubeOffsetAmount.maxValue), tweenDuration);
 
             else
             {
@@ -63,7 +63,7 @@ public class CubeManager : MonoBehaviour
                 if (offsetStrength >= 0) offsetStrength *= offsetAmount.maxValue;
                 else offsetStrength *= offsetAmount.minValue;
 
-                cube.MoveCube(offsetStrength);
+                cube.MoveCube(offsetStrength, tweenDuration);
             }
         }
     }

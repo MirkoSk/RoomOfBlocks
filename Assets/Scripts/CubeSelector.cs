@@ -7,11 +7,15 @@ public class CubeSelector : MonoBehaviour
 {
     [SerializeField] Color emissiveColor = new Color();
     [SerializeField] float lightIntensity = 1.59f;
+
+    [Space]
     [SerializeField] float tweenDuration = 2f;
     [SerializeField] float tweenFadeOutMultiplier = 2f;
+    [SerializeField] Ease tweenEaseType = Ease.InOutQuad;
 
     [Space]
     [SerializeField] CubeController blueCube = null;
+    [SerializeField] CubeManager cubeManager = null;
 
     CubeController previousTarget = null;
 
@@ -39,11 +43,11 @@ public class CubeSelector : MonoBehaviour
                 if (hitCube != blueCube)
                 {
                     // Light up new target
-                    hitCube.GetComponentInChildren<MeshRenderer>().material.DOColor(emissiveColor, "_EmissiveColor", tweenDuration).SetId(hitCube);
+                    hitCube.GetComponentInChildren<MeshRenderer>().material.DOColor(emissiveColor, "_EmissiveColor", tweenDuration).SetId(hitCube).SetEase(tweenEaseType);
 
                     Light light = hitCube.GetComponentInChildren<Light>();
                     light.enabled = true;
-                    light.DOIntensity(0f, tweenDuration).From().SetId(hitCube)
+                    light.DOIntensity(0f, tweenDuration).From().SetId(hitCube).SetEase(tweenEaseType)
                         .OnComplete(() =>
                         {
                             AssignBlueCube(hitCube);
@@ -79,9 +83,9 @@ public class CubeSelector : MonoBehaviour
     {
         if (blueCube != null)
         {
-            blueCube.GetComponentInChildren<MeshRenderer>().material.DOColor(Color.black, "_EmissiveColor", tweenDuration).SetId(blueCube).SetEase(Ease.InSine);
+            blueCube.GetComponentInChildren<MeshRenderer>().material.DOColor(Color.black, "_EmissiveColor", tweenDuration).SetId(blueCube).SetEase(tweenEaseType);
             Light light = blueCube.GetComponentInChildren<Light>();
-            light.DOIntensity(0f, tweenDuration).SetId(blueCube).SetEase(Ease.InSine)
+            light.DOIntensity(0f, tweenDuration).SetId(blueCube).SetEase(tweenEaseType)
                 .OnComplete(() =>
                 {
                     light.enabled = false;
@@ -91,5 +95,6 @@ public class CubeSelector : MonoBehaviour
 
         cube.GetComponentInChildren<ParticleSystem>().Play();
         blueCube = cube;
+        if (cubeManager != null) cubeManager.MoveCubes();
     }
 }

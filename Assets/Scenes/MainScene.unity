@@ -11637,9 +11637,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f144a8aab564c8e448662dfe0c990b12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tweenDuration: 1.5
   offsetAmount:
-    minValue: -0.1603948
-    maxValue: 0.5516274
+    minValue: -0.21008424
+    maxValue: 0.55162734
   offsetDistribution:
     serializedVersion: 2
     m_Curve:
@@ -11682,10 +11683,10 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  cubeSelector: {fileID: 1391640390}
   blueCubeOffsetAmount:
     minValue: 0.4008069
     maxValue: 0.62154275
+  cubeSelector: {fileID: 1391640390}
 --- !u!4 &1391640389
 Transform:
   m_ObjectHideFlags: 0
@@ -11714,9 +11715,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   emissiveColor: {r: 0, g: 0.78616345, b: 0.9433962, a: 1}
   lightIntensity: 1.59
-  tweenDuration: 2
+  tweenDuration: 1.2
   tweenFadeOutMultiplier: 3
+  tweenEaseType: 1
   blueCube: {fileID: 0}
+  cubeManager: {fileID: 1391640388}
 --- !u!1001 &1393124055
 PrefabInstance:
   m_ObjectHideFlags: 0

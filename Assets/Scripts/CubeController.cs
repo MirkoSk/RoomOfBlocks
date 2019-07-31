@@ -18,7 +18,7 @@ public class CubeController : MonoBehaviour
 
 
 
-    public void MoveCube(float offset)
+    public void MoveCube(float offset, float duration)
     {
         idle = false;
 
@@ -28,18 +28,18 @@ public class CubeController : MonoBehaviour
             {
                 Vector3 newPosition = origin;
                 newPosition.y = origin.y + offset;
-                transform.DOLocalMove(newPosition, 1f).OnComplete(() => idle = true);
+                transform.DOLocalMove(newPosition, duration).SetEase(Ease.InOutQuad).OnComplete(() => idle = true);
             }
             else
             {
                 Vector3 newPosition = origin;
                 newPosition.y = origin.y + Mathf.Abs(offset);
-                transform.DOLocalMove(newPosition, 1f).OnComplete(() => idle = true);
+                transform.DOLocalMove(newPosition, duration).SetEase(Ease.InOutQuad).OnComplete(() => idle = true);
             }
         }
         else
         {
-            transform.DOLocalMove(origin, 1f).OnComplete(() => idle = true);
+            transform.DOLocalMove(origin, duration).SetEase(Ease.InOutQuad).OnComplete(() => idle = true);
         }
     }
 
