@@ -6,7 +6,10 @@ using DG.Tweening;
 public class CubeSelector : MonoBehaviour
 {
     [SerializeField] Color emissiveColor = new Color();
+    [SerializeField] float tweenDuration = 2f;
     [SerializeField] CubeController blueCube = null;
+
+    CubeController currentTarget = null;
 
     public CubeController BlueCube { get { return blueCube; } }
 
@@ -25,18 +28,62 @@ public class CubeSelector : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 100f))
         {
             CubeController hitCube = hit.transform.GetComponentInParent<CubeController>();
-            if (hitCube != null)
+
+            // Target switched
+            if (hitCube != null && hitCube != currentTarget)
             {
-                if (blueCube != null)
+                if (hitCube != blueCube)
                 {
-                    blueCube.GetComponentInChildren<MeshRenderer>().material.SetColor("_EmissiveColor", Color.black);
-                    blueCube.GetComponentInChildren<Light>().enabled = false;
+                    // Light up new target
+                    hitCube.GetComponentInChildren<MeshRenderer>().material.DOColor(emissiveColor, "_EmissiveColor", tweenDuration).SetId(hitCube);
+
+                    Light light = hitCube.GetComponentInChildren<Light>();
+                    float lightIntensity = light.intensity;
+                    light.enabled = true;
+                    light.DOIntensity(0f, tweenDuration).From().SetId(hitCube)
+                        .OnComplete(() =>
+                        {
+                            AssignBlueCube(hitCube);
+                        })
+                        .OnRewind(() =>
+                        {
+                            if (light.intensity == 0f)
+                            {
+                                light.enabled = false;
+                                light.intensity = lightIntensity;
+                            }
+                        });
                 }
 
-                blueCube = hitCube;
-                blueCube.GetComponentInChildren<MeshRenderer>().material.SetColor("_EmissiveColor", emissiveColor);
-                blueCube.GetComponentInChildren<Light>().enabled = true;
+
+                // Unlight the previous target
+                if (currentTarget != null)
+                {
+                    DOTween.PlayBackwards(currentTarget);
+                }
+
+
+                // Update reference to currentTarget
+                currentTarget = hitCube;
             }
         }
+    }
+
+    void AssignBlueCube(CubeController cube)
+    {
+        if (blueCube != null)
+        {
+            blueCube.GetComponentInChildren<MeshRenderer>().material.DOColor(Color.black, "_EmissiveColor", tweenDuration).SetId(blueCube);
+            Light light = blueCube.GetComponentInChildren<Light>();
+            float lightIntensity = light.intensity;
+            light.DOIntensity(0f, tweenDuration).SetId(blueCube)
+                .OnComplete(() =>
+                {
+                    light.enabled = false;
+                    light.intensity = lightIntensity;
+                });
+        }
+
+        blueCube = cube;
     }
 }

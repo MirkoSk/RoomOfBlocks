@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class CubeManager : MonoBehaviour
 {
@@ -18,6 +19,13 @@ public class CubeManager : MonoBehaviour
     CubeController[] cubes;
 
 
+
+    private void Awake()
+    {
+        DOTween.Init(recycleAllByDefault: true, logBehaviour: LogBehaviour.Default).SetCapacity(1000, 0);
+        DOTween.defaultEaseType = Ease.InOutQuad;
+        Cursor.visible = false;
+    }
 
     void Start()
     {
