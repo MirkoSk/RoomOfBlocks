@@ -43,6 +43,7 @@ public class CubeSelector : MonoBehaviour
                 if (hitCube != blueCube)
                 {
                     // Light up new target
+                    DOTween.Kill(hitCube);
                     hitCube.GetComponentInChildren<MeshRenderer>().material.DOColor(emissiveColor, "_EmissiveColor", tweenDuration).SetId(hitCube).SetEase(tweenEaseType);
 
                     Light light = hitCube.GetComponentInChildren<Light>();
